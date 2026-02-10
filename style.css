@@ -29,16 +29,16 @@ nav ul li a:hover { color: var(--accent); }
 header { padding: 100px 8%; text-align: center; position: relative; background: radial-gradient(circle at top right, #f8fafc, #fff); }
 
 .profile-container {
-    position: relative; width: 200px; height: 200px;
+    position: relative; width: 300px; height: 300px;
     margin: 0 auto 30px; display: flex; align-items: center; justify-content: center;
 }
 .profile-pic {
-    width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+    width: 260px; height: 260px; border-radius: 50%; object-fit: cover;
     z-index: 5; border: 5px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
-.ring-outer, .ring-inner { position: absolute; border-radius: 50%; border: 2px solid var(--accent); opacity: 0.5; }
-.ring-outer { width: 200px; height: 200px; animation: rotateRing 10s linear infinite; }
-.ring-inner { width: 185px; height: 185px; border-style: dashed; animation: rotateRing 15s linear reverse infinite; }
+.ring-outer, .ring-inner { position: absolute; border-radius: 50%; border: 5px solid var(--accent); opacity: 0.5; }
+.ring-outer { width: 300px; height: 300px; animation: rotateRing 10s linear infinite; }
+.ring-inner { width: 285px; height: 285px; border-style: dashed; animation: rotateRing 15s linear reverse infinite; }
 @keyframes rotateRing { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 header h1 { font-size: 3.5rem; letter-spacing: -2px; margin-bottom: 10px; }
@@ -103,4 +103,91 @@ footer { background: var(--primary); color: #fff; text-align: center; padding: 8
 
 @media (max-width: 900px) {
     .gallery-blog-split { grid-template-columns: 1fr; }
+} /* Gallery Carousel - Professional Polish */
+.gallery-wrapper {
+    position: relative;
+    padding: 20px 0;
+}
+
+.carousel-container {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 10px 40px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.carousel-item {
+    min-width: 320px; /* Bigger card size as requested */
+    height: 450px; /* Taller card to fit portrait student photos */
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    padding: 0; /* Remove default card padding to let image fill */
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps people from looking stretched */
+    transition: transform 0.6s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 20px 20px;
+    background: linear-gradient(transparent, rgba(15, 23, 42, 0.95));
+    color: white;
+    z-index: 10;
+}
+
+.carousel-caption h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--accent);
+}
+
+.carousel-caption p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.scroll-hint {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* Insight Card Positioning */
+.insight-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .carousel-item {
+        min-width: 280px; /* Slightly narrower on small screens */
+        height: 400px;
+    }
+    .carousel-caption {
+        padding: 20px;
+    }
 }
